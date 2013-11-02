@@ -17,9 +17,6 @@ public class MainActivity extends Activity {
         Parse.initialize(this, "TpTvZ7H4ABQPG9ig5Io3lko0VcUVlOZpDiQXHZuj", "1p4926LkDGfpKY5PEgiJwGejMgYMUSWPtaBaDPPX"); 
         ParseAnalytics.trackAppOpened(getIntent());
         
-        ParseObject testObject = new ParseObject("game");
-        testObject.put("name", "ayesha");
-        testObject.saveInBackground();
     }
 
 
