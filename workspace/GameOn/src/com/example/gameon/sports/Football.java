@@ -6,6 +6,7 @@ public class Football implements Sport {
 
 	private String name = "football";
 	private String level;
+	private String id;
 	
 	public Football(String level) {
 		this.level = level;
@@ -25,5 +26,11 @@ public class Football implements Sport {
 		this.level = level;
 	}
 	
-
+	public String getID(){
+		return this.id;
+	}
+	
+	public void setID(String id){
+		this.id = id;
+	}
 }
