@@ -28,4 +28,5 @@ public class DayAndTime {
 	public void setTime(Time time) {
 		this.time = time;
 	}
+	
 }
