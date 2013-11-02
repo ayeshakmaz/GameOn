@@ -10,19 +10,6 @@
     tools:context=".LoginActivity" >
 
     <EditText
-        android:id="@+id/username_editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="148dp"
-        android:ems="10"
-        android:hint="Username" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
         android:id="@+id/password_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,5 +41,15 @@
         android:layout_marginTop="10dp"
         android:text="Sign Up" 
         android:onClick="signupOnClick"/>
+
+    <EditText
+        android:id="@+id/username_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="175dp"
+        android:ems="10"
+        android:hint="Username" />
 
 </RelativeLayout>
