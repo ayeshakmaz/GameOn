@@ -6,5 +6,30 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_signup">SignupActivity</string>
+    <string name="sport_prompt">Choose a Sport</string>
+    <string name="location_prompt">Choose a Location</string>
+    
+    <string-array name="sport_arrays">
+        <item>Basketball</item>
+        <item>Football</item>
+        <item>Soccer</item>
+        <item>Ultimate Frisbee</item>
+        <item>Volleyball</item>
+        <item>Beach Volleyball</item>
+        <item>Tennis</item>
+        <item>Running</item>
+    </string-array>
+    
+    <string-array name="location_arrays">
+        <item>RIMAC Field</item>
+        <item>Marshall Field</item>
+        <item>Warren Field</item>
+        <item>Muir Field</item>
+        <item>Muir Tennis Court</item>
+        <item>Muir Basketball</item>
+        <item>RIMAC BBall Court</item>
+        <item>Track</item>
+    </string-array>
+    
 
 </resources>

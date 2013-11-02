@@ -1,5 +1,6 @@
 package com.example.gameon;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
@@ -11,7 +12,7 @@ public class Game {
 	private DayAndTime dat;
 	private String gender;
 	private String size;
-	
+	private String objID;
 
 	public Game(ParseUser user, Sport sport, String location, DayAndTime dat, String gender, String size) {
 		this.user = user;
@@ -22,7 +23,13 @@ public class Game {
 		this.size = size;
 	}
 	
+	
+	/*
+	 * Add game to server
+	 */
 	public boolean addGame(Game game) {
+		
+		//Populate ParseObject with values
 		ParseObject gameobj = new ParseObject("game");
 		gameobj.put("user", game.getUser().getUsername());
 		gameobj.put("sport_type", game.getSport().getName());
@@ -35,12 +42,51 @@ public class Game {
 		sportobj.put("name", game.getSport().getName());
 		sportobj.put("level", game.getSport().getLevel());
 		
-		gameobj.saveInBackground();
-		sportobj.saveInBackground();
+		
+		//Add to 'game' table
+		try {
+			gameobj.save();
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		//Add to 'sport' table
+		try {
+			sportobj.save();
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		//Save objectID in Game object
+		game.setID(gameobj.getObjectId());
+		game.getSport().setID(sportobj.getObjectId());
 		return true;		
 	}
 	
-	
+	/*
+	 * Delete game from server
+	 */
+	public boolean deleteGame(Game game) {
+		
+		//Delete game using objectID
+		try {
+			ParseObject.createWithoutData("game", game.getID()).delete();
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		try {
+			ParseObject.createWithoutData("sport", game.getSport().getID()).delete();
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+	}
 	
 	
 	public ParseUser getUser(){
@@ -87,5 +133,12 @@ public class Game {
 		this.size = size;
 	}
 	
+	public String getID(){
+		return this.objID;
+	}
+	
+	public void setID(String id){
+		this.objID = id;
+	}
 	
 }
