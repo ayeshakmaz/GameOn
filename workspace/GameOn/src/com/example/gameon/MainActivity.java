@@ -4,8 +4,10 @@ import android.os.Bundle;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 
 public class MainActivity extends Activity {
@@ -17,6 +19,14 @@ public class MainActivity extends Activity {
         Parse.initialize(this, "TpTvZ7H4ABQPG9ig5Io3lko0VcUVlOZpDiQXHZuj", "1p4926LkDGfpKY5PEgiJwGejMgYMUSWPtaBaDPPX"); 
         ParseAnalytics.trackAppOpened(getIntent());
         
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+          // do stuff with the user
+        } else {
+          // show the signup or login screen
+        	Intent intent = new Intent(this, LoginActivity.class);
+    		startActivity(intent);
+        }
     }
 
 
