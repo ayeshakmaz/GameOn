@@ -9,6 +9,12 @@ import com.parse.ParseUser;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -27,8 +33,27 @@ public class MainActivity extends Activity {
         	Intent intent = new Intent(this, LoginActivity.class);
     		startActivity(intent);
         }
+        
+        addListenerOnSpinnerItemSelection();
+    	
+    	GridView gridview = (GridView) findViewById(R.id.gridview);
+        gridview.setAdapter(new ImageAdapter(this));
+
+        gridview.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+        
     }
 
+
+	public void addListenerOnSpinnerItemSelection() {
+  	Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
+  	spinner1.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+  	Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
+  	spinner2.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
