@@ -1,9 +1,15 @@
 package com.example.gameon;
 
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Date;
+
 import android.os.Bundle;
+
+import com.example.gameon.sports.Basketball;
+import com.example.gameon.sports.Football;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import android.app.Activity;
@@ -22,6 +28,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ArrayList<Game> gArr = new ArrayList<Game>();
+        CustomGridViewAdapter customGridAdapter;
         Parse.initialize(this, "TpTvZ7H4ABQPG9ig5Io3lko0VcUVlOZpDiQXHZuj", "1p4926LkDGfpKY5PEgiJwGejMgYMUSWPtaBaDPPX"); 
         ParseAnalytics.trackAppOpened(getIntent());
         
@@ -37,8 +45,17 @@ public class MainActivity extends Activity {
         addListenerOnSpinnerItemSelection();
     	
     	GridView gridview = (GridView) findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(this));
-
+    	
+        gArr.add(new Game(currentUser, new Football("7"),"here", new DayAndTime(new Date(), new Time(3, 0, 0)),"Male", "5"));
+        gArr.add(new Game(currentUser, new Basketball("7"),"here", new DayAndTime(new Date(), new Time(12, 0, 0)),"Female", "5"));
+        gArr.add(new Game(currentUser, new Football("7"),"here", new DayAndTime(new Date(), new Time(3, 0, 0)),"Male", "3"));
+        gArr.add(new Game(currentUser, new Basketball("7"),"here", new DayAndTime(new Date(), new Time(12, 0, 0)),"Male", "5"));
+        gArr.add(new Game(currentUser, new Football("7"),"here", new DayAndTime(new Date(), new Time(3, 0, 0)),"Male", "3"));
+        gArr.add(new Game(currentUser, new Basketball("7"),"here", new DayAndTime(new Date(), new Time(12, 0, 0)),"Male", "5"));
+    	
+    	customGridAdapter = new CustomGridViewAdapter(this, R.layout.grid_tile, gArr);
+        gridview.setAdapter(customGridAdapter);
+        
         gridview.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();

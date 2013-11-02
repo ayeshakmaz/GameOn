@@ -27,20 +27,20 @@ public class Game {
 	/*
 	 * Add game to server
 	 */
-	public boolean addGame(Game game) {
+	public boolean addGameToDB() {
 		
 		//Populate ParseObject with values
 		ParseObject gameobj = new ParseObject("game");
-		gameobj.put("user", game.getUser().getUsername());
-		gameobj.put("sport_type", game.getSport().getName());
-		gameobj.put("location", game.getLocation());
-		gameobj.put("date", game.getDAT().getDate()+" "+game.getDAT().getTime());
-		gameobj.put("gender", game.getGender());
-		gameobj.put("size", game.getSize());
+		gameobj.put("user", this.getUser().getUsername());
+		gameobj.put("sport_type", this.getSport().getName());
+		gameobj.put("location", this.getLocation());
+		gameobj.put("date", this.getDAT().getDate()+" "+this.getDAT().getTime());
+		gameobj.put("gender", this.getGender());
+		gameobj.put("size", this.getSize());
 		
 		ParseObject sportobj = new ParseObject("sport");
-		sportobj.put("name", game.getSport().getName());
-		sportobj.put("level", game.getSport().getLevel());
+		sportobj.put("name", this.getSport().getName());
+		sportobj.put("level", this.getSport().getLevel());
 		
 		
 		//Add to 'game' table
@@ -60,8 +60,8 @@ public class Game {
 		}
 		
 		//Save objectID in Game object
-		game.setID(gameobj.getObjectId());
-		game.getSport().setID(sportobj.getObjectId());
+		this.setID(gameobj.getObjectId());
+		this.getSport().setID(sportobj.getObjectId());
 		return true;		
 	}
 	

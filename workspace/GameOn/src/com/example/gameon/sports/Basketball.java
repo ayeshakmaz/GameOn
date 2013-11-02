@@ -2,13 +2,13 @@ package com.example.gameon.sports;
 
 import com.example.gameon.Sport;
 
-public class Football implements Sport {
+public class Basketball implements Sport {
 
-	private String name = "Football";
+	private String name = "Basketball";
 	private String level;
 	private String id;
 	
-	public Football(String level) {
+	public Basketball(String level) {
 		this.level = level;
 	}
 	

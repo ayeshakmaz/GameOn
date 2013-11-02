@@ -9,7 +9,7 @@
     tools:context=".MainActivity" >
 
      <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/sport_textView_gridView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -22,7 +22,7 @@
         android:layout_width="fill_parent"
         android:layout_height="500dp"
         android:layout_below="@+id/spinner2"
-        android:columnWidth="90dp"
+        android:columnWidth="100dp"
         android:gravity="center"
         android:horizontalSpacing="10dp"
         android:numColumns="auto_fit"
@@ -33,7 +33,7 @@
         android:id="@+id/spinner1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/sport_textView_gridView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:entries="@array/sport_arrays"
