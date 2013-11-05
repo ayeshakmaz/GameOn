@@ -46,14 +46,14 @@ public class MainActivity extends Activity {
     	
     	GridView gridview = (GridView) findViewById(R.id.gridview);
     	
-        gArr.add(new Game(currentUser, new Football("7"),"here", new DayAndTime(new Date(), new Time(3, 0, 0)),"Male", "5"));
-        gArr.add(new Game(currentUser, new Basketball("7"),"here", new DayAndTime(new Date(), new Time(12, 0, 0)),"Female", "5"));
-        gArr.add(new Game(currentUser, new Football("7"),"here", new DayAndTime(new Date(), new Time(3, 0, 0)),"Male", "3"));
-        gArr.add(new Game(currentUser, new Basketball("7"),"here", new DayAndTime(new Date(), new Time(12, 0, 0)),"Male", "5"));
-        gArr.add(new Game(currentUser, new Football("7"),"here", new DayAndTime(new Date(), new Time(3, 0, 0)),"Male", "3"));
-        gArr.add(new Game(currentUser, new Basketball("7"),"here", new DayAndTime(new Date(), new Time(12, 0, 0)),"Male", "5"));
+        gArr.add(new Game(currentUser, new Football("nub"),"here", new DayAndTime(new Date(), new Time(3, 0, 0)),"Male", "5"));
+        gArr.add(new Game(currentUser, new Basketball("avg"),"here", new DayAndTime(new Date(), new Time(12, 0, 0)),"Female", "5"));
+        gArr.add(new Game(currentUser, new Football("pro"),"here", new DayAndTime(new Date(), new Time(3, 0, 0)),"Male", "3"));
+        gArr.add(new Game(currentUser, new Basketball("pro"),"here", new DayAndTime(new Date(), new Time(12, 0, 0)),"Male", "5"));
+        gArr.add(new Game(currentUser, new Basketball("avg"),"here", new DayAndTime(new Date(), new Time(12, 0, 0)),"Male", "5"));
+        gArr.add(new Game(currentUser, new Basketball("nub"),"here", new DayAndTime(new Date(), new Time(12, 0, 0)),"Male", "5"));
     	
-    	customGridAdapter = new CustomGridViewAdapter(this, R.layout.grid_tile, gArr);
+    	customGridAdapter = new CustomGridViewAdapter(this, R.layout.grid_tile_nub, gArr);
         gridview.setAdapter(customGridAdapter);
         
         gridview.setOnItemClickListener(new OnItemClickListener() {

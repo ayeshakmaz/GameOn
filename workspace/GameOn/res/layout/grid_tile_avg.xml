@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/RelativeLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="155dp"
     android:orientation="vertical"
+    android:background="@drawable/tile_bg_avg"
     android:padding="5dp" >
 
     <TextView
@@ -41,17 +42,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-     	android:layout_marginTop="30dp"
+     	android:layout_marginTop="15dp"
      	android:layout_marginRight="5dp"
-        android:textSize="100dp" />
+        android:textSize="100dp" 
+        android:textColor="#228a4c"/>
 
     <TextView
         android:id="@+id/sport_textView_gridView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="0dp"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 

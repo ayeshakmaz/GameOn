@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/main_bg"
     tools:context=".MainActivity" >
 
      <TextView
@@ -17,10 +18,13 @@
         android:text="This Week's Games"
         android:textAppearance="?android:attr/textAppearanceLarge" />
      
-    <GridView 
+    <GridView
         android:id="@+id/gridview"
         android:layout_width="fill_parent"
         android:layout_height="500dp"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="0dp"
+        android:layout_margin="0dp"
         android:layout_below="@+id/spinner2"
         android:columnWidth="100dp"
         android:gravity="center"

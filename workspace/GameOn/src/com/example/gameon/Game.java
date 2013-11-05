@@ -61,25 +61,25 @@ public class Game {
 		
 		//Save objectID in Game object
 		this.setID(gameobj.getObjectId());
-		this.getSport().setID(sportobj.getObjectId());
+		this.getSport().setID(gameobj.getObjectId());
 		return true;		
 	}
 	
 	/*
 	 * Delete game from server
 	 */
-	public boolean deleteGame(Game game) {
+	public boolean deleteGame() {
 		
 		//Delete game using objectID
 		try {
-			ParseObject.createWithoutData("game", game.getID()).delete();
+			ParseObject.createWithoutData("game", this.getID()).delete();
 		} catch (ParseException e) {
 			e.printStackTrace();
 			return false;
 		}
 		
 		try {
-			ParseObject.createWithoutData("sport", game.getSport().getID()).delete();
+			ParseObject.createWithoutData("sport", this.getID()).delete();
 		} catch (ParseException e) {
 			e.printStackTrace();
 			return false;
