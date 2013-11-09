@@ -14,6 +14,7 @@
         android:layout_below="@+id/sport_textView_gridView"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:textColor="#000000"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -25,6 +26,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:text="Medium Text"
+        android:textColor="#000000"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -34,6 +36,7 @@
         android:layout_below="@+id/location_textView_gridView"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:textColor="#000000"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -55,6 +58,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="0dp"
         android:text="Large Text"
+        android:textColor="#000000"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
