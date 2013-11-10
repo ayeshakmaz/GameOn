@@ -6,26 +6,23 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#444488"
+        android:background="#5A5856"
         android:orientation="vertical" >
 
-        <Button
+        <ListView
+            android:id="@+id/menu_primary_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="toggleMenu"
-            android:text="Button 1" />
+            android:layout_height="wrap_content" >
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="toggleMenu"
-            android:text="Button 2" />
+        </ListView>
 
-        <Button
+        <ListView
+            android:id="@+id/menu_secondary_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="toggleMenu"
-            android:text="Button 3" />
+            android:layout_height="wrap_content" >
+
+        </ListView>
+
     </LinearLayout>
 
     <RelativeLayout
@@ -39,11 +36,11 @@
 
         <TextView
             android:id="@+id/sport_textView_gridView"
-            android:paddingTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:paddingTop="5dp"
             android:text="This Week&apos;s Games"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#000000" />

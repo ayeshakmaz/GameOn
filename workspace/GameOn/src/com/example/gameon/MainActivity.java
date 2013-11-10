@@ -36,6 +36,7 @@ public class MainActivity extends Activity {
 		this.setContentView(root);
 
 		ArrayList<Game> gArr = new ArrayList<Game>();
+		ArrayList<MenuItem> mArr = new ArrayList<MenuItem>();
 		CustomGridViewAdapter customGridAdapter;
 		Parse.initialize(this, "TpTvZ7H4ABQPG9ig5Io3lko0VcUVlOZpDiQXHZuj",
 				"1p4926LkDGfpKY5PEgiJwGejMgYMUSWPtaBaDPPX");
@@ -49,10 +50,16 @@ public class MainActivity extends Activity {
 			Intent intent = new Intent(this, LoginActivity.class);
 			startActivity(intent);
 		}
+		
+		
 
 		addListenerOnSpinnerItemSelection();
 
 		GridView gridview = (GridView) findViewById(R.id.gridview);
+		
+		mArr.add(new MenuItem("Location", MainActivity.class));
+		mArr.add(new MenuItem("Sport", MainActivity.class));
+		mArr.add(new MenuItem("Time", MainActivity.class));
 
 		gArr.add(new Game(currentUser, new Football("nub"), "here",
 				new DayAndTime(new Date(), new Time(3, 0, 0)), "Male", "5"));
@@ -98,4 +105,5 @@ public class MainActivity extends Activity {
 	public void toggleMenu(View v) {
 		this.root.toggleMenu();
 	}
+	
 }
