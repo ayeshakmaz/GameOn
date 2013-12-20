@@ -37,9 +37,8 @@
             android:id="@+id/menu_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
             android:background="#0772A1"
-            android:orientation="horizontal" >
+            android:padding="5dp" >
 
             <Button
                 android:id="@+id/menu_button_main"
@@ -54,10 +53,10 @@
                 android:id="@+id/menu_title_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
                 android:layout_centerHorizontal="true"
+                android:layout_gravity="center_vertical"
                 android:paddingTop="5dp"
-                android:text="This Week&apos;s Games"
+                android:text="New Message"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#fff" />
 
@@ -71,62 +70,36 @@
                 android:onClick="settingOnClick" />
         </RelativeLayout>
 
-        <GridView
-            android:id="@+id/gridview"
-            android:layout_width="fill_parent"
-            android:layout_height="500dp"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/spinner1"
-            android:layout_margin="10dp"
-            android:columnWidth="100dp"
-            android:gravity="center"
-            android:horizontalSpacing="10dp"
-            android:numColumns="2"
-            android:paddingBottom="0dp"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="10dp" />
-
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/menu_bar"
-            android:layout_marginTop="10dp"
-            android:entries="@array/spinner_options"
-            android:prompt="@string/sport_prompt" />
-
-        <EditText
-            android:id="@+id/search_input"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/spinner1"
-            android:layout_toRightOf="@+id/spinner1"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:hint="Search" />
-
-        <!--
-           <Spinner
-            android:id="@+id/spinner2"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/spinner1"
-            android:layout_below="@+id/spinner1"
-            android:entries="@array/location_arrays"
-            android:prompt="@string/location_prompt" />
-        -->
-
-        <ListView
-            android:id="@+id/menu_setting_list"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_height="fill_parent"
             android:layout_below="@+id/menu_bar"
-            android:layout_marginRight="2dp"
-            android:background="#0772A1"
-            android:entries="@array/settings_options" >
-        </ListView>
+            android:background="@drawable/main_bg"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/new_message_editText"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:fadeScrollbars="false"
+                android:gravity="top|left"
+                android:inputType="textMultiLine|textNoSuggestions"
+                android:lines="20"
+                android:scrollbars="vertical" />
+
+            <Button
+                android:id="@+id/send_message_button"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@+id/new_message_editText"
+                android:layout_weight="2"
+                android:background="#00B74A"
+                android:layout_margin="5dp"
+                android:onClick="sendOnClick"
+                android:text="Send Message"
+                android:textColor="#fff" />
+        </LinearLayout>
     </RelativeLayout>
 
 </com.example.gameon.layouts.view.viewgroup.FlyOutContainer>

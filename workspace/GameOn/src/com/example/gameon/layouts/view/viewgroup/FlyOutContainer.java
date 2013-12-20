@@ -1,6 +1,7 @@
-package com.example.gameon.view.viewgroup;
+package com.example.gameon.layouts.view.viewgroup;
 
 import android.R;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -43,9 +44,10 @@ public class FlyOutContainer extends LinearLayout {
 	protected Handler menuAnimationHandler = new Handler();
 
 	// Animation constants
-	private static final int menuAnimationDuration = 1000;
+	private static final int menuAnimationDuration = 500;
 	private static final int menuAnimationPollingInterval = 16;
 
+	@SuppressLint("NewApi")
 	public FlyOutContainer(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	    int[] colors = {Color.TRANSPARENT, Color.BLACK};
@@ -80,9 +82,9 @@ public class FlyOutContainer extends LinearLayout {
 		if (changed)
 			this.calculateChildDimensions();
 
-		this.menu.layout(left, top, right - menuMargin, bottom);
+		this.menu.layout(left, 0, right - menuMargin, bottom);
 
-		this.content.layout(left + this.currentContentOffset, top, right
+		this.content.layout(left + this.currentContentOffset, 0, right
 				+ this.currentContentOffset, bottom);
 
 	}

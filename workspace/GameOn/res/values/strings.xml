@@ -8,7 +8,7 @@
     <string name="title_activity_signup">SignupActivity</string>
     <string name="sport_prompt">Choose a Sport</string>
     <string name="location_prompt">Choose a Location</string>
-    
+
     <string-array name="sport_arrays">
         <item>Basketball</item>
         <item>Football</item>
@@ -19,7 +19,6 @@
         <item>Tennis</item>
         <item>Running</item>
     </string-array>
-    
     <string-array name="location_arrays">
         <item>RIMAC Field</item>
         <item>Marshall Field</item>
@@ -30,6 +29,23 @@
         <item>RIMAC BBall Court</item>
         <item>Track</item>
     </string-array>
-    
+    <string-array name="spinner_options">
+        <item>Sport</item>
+        <item>Location</item>
+        <item>Gender</item>
+    </string-array>
+    <string-array name="skill_levels">
+        <item>Nub</item>
+        <item>Average</item>
+        <item>Pro</item>
+    </string-array>
+    <string-array name="settings_options">
+        <item>Log Out</item>
+    </string-array>
+
+    <string name="title_activity_message_board">MessageBoardActivity</string>
+    <string name="select_one_prompt">Select One</string>
+    <string name="title_activity_new_message">NewMessageActivity</string>
+    <string name="title_activity_notification">NotificationActivity</string>
 
 </resources>

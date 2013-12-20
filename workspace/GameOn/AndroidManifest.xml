@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="10"
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -18,8 +18,10 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.gameon.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-	        android:theme="@android:style/Theme.NoTitleBar">
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateUnchanged|adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,11 +30,28 @@
         </activity>
         <activity
             android:name="com.example.gameon.LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:label="@string/title_activity_login"
+            android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
             android:name="com.example.gameon.SignupActivity"
-            android:label="@string/title_activity_signup" >
+            android:label="@string/title_activity_signup"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.gameon.MessageBoardActivity"
+            android:label="@string/title_activity_message_board"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.gameon.NewMessageActivity"
+            android:label="@string/title_activity_new_message"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.example.gameon.ResponseActivity"
+            android:label="@string/title_activity_notification"
+            android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
     </application>
 

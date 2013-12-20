@@ -41,6 +41,11 @@ public class SignupActivity extends Activity {
 		final String password = inputPassword.getText().toString();
 		final String email = inputEmail.getText().toString();
 		
+		if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
+	    	Toast.makeText( getApplicationContext(), "Fill in all feilds", Toast.LENGTH_LONG).show();
+	    	return;
+		}
+		
 		ParseUser user = new ParseUser();
 		user.setUsername(username);
 		user.setPassword(password);

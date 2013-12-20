@@ -1,6 +1,5 @@
 package com.example.gameon.sports;
 
-import com.example.gameon.Sport;
 
 public class Basketball implements Sport {
 

@@ -1,4 +1,4 @@
-package com.example.gameon;
+package com.example.gameon.sports;
 
 public interface Sport {
 	

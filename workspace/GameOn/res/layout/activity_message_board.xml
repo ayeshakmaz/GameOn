@@ -37,9 +37,9 @@
             android:id="@+id/menu_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
             android:background="#0772A1"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
             <Button
                 android:id="@+id/menu_button_main"
@@ -54,10 +54,10 @@
                 android:id="@+id/menu_title_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
                 android:layout_centerHorizontal="true"
+                android:layout_gravity="center_vertical"
                 android:paddingTop="5dp"
-                android:text="This Week&apos;s Games"
+                android:text="Messages"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#fff" />
 
@@ -71,61 +71,11 @@
                 android:onClick="settingOnClick" />
         </RelativeLayout>
 
-        <GridView
-            android:id="@+id/gridview"
-            android:layout_width="fill_parent"
-            android:layout_height="500dp"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/spinner1"
-            android:layout_margin="10dp"
-            android:columnWidth="100dp"
-            android:gravity="center"
-            android:horizontalSpacing="10dp"
-            android:numColumns="2"
-            android:paddingBottom="0dp"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="10dp" />
-
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/menu_bar"
-            android:layout_marginTop="10dp"
-            android:entries="@array/spinner_options"
-            android:prompt="@string/sport_prompt" />
-
-        <EditText
-            android:id="@+id/search_input"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/spinner1"
-            android:layout_toRightOf="@+id/spinner1"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:hint="Search" />
-
-        <!--
-           <Spinner
-            android:id="@+id/spinner2"
+        <ListView
+            android:id="@+id/message_listView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/spinner1"
-            android:layout_below="@+id/spinner1"
-            android:entries="@array/location_arrays"
-            android:prompt="@string/location_prompt" />
-        -->
-
-        <ListView
-            android:id="@+id/menu_setting_list"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/menu_bar"
-            android:layout_marginRight="2dp"
-            android:background="#0772A1"
-            android:entries="@array/settings_options" >
+            android:layout_below="@+id/menu_bar" >
         </ListView>
     </RelativeLayout>
 

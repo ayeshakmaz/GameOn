@@ -1,4 +1,4 @@
-package com.example.gameon;
+package com.example.gameon.objects;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
@@ -12,14 +12,15 @@ public class MenuItem {
 	public Drawable getImage() {
 		return image;
 	}
+	
+	public MenuItem (String t, Class<?> a, Drawable i) {
+		this.title = t;
+		this.activity = a;
+		this.image = i;
+	}
 
 	public void setImage(Drawable image) {
 		this.image = image;
-	}
-
-	public MenuItem (String t, Class<?> a) {
-		this.title = t;
-		this.activity = a;
 	}
 
 	public String getTitle() {
