@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.example.gameon.R;
 import com.example.gameon.R.id;
-import com.example.gameon.layouts.CustomGameAdapter.RecordHolder;
+import com.example.gameon.layouts.GameAdapter.RecordHolder;
 import com.example.gameon.objects.Message;
 
 import android.app.Activity;
@@ -17,14 +17,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomMessageAdapter extends ArrayAdapter<Message>{
+public class MessageAdapter extends ArrayAdapter<Message>{
 
 	ArrayList<Message> objects;
 	Context context;
 	int layoutResId;
 	int textColor = Color.BLACK;
 	
-	public CustomMessageAdapter(Context context, int resource,
+	public MessageAdapter(Context context, int resource,
 			ArrayList<Message> objects) {
 		super(context, resource, resource, objects);
 		this.objects = objects;

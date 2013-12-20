@@ -8,8 +8,8 @@ import java.util.Locale;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.gameon.layouts.CustomGameAdapter;
-import com.example.gameon.layouts.CustomMenuAdapter;
+import com.example.gameon.layouts.GameAdapter;
+import com.example.gameon.layouts.MenuAdapter;
 import com.example.gameon.layouts.view.viewgroup.FlyOutContainer;
 import com.example.gameon.objects.Game;
 import com.example.gameon.objects.MenuItem;
@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
 
 	FlyOutContainer root;
 	private ArrayList<Game> gArr;
-	private CustomGameAdapter customGridAdapter;
+	private GameAdapter customGridAdapter;
 	private String searchItemSelected = "Sport";
 	DatabaseManager dbhandler;
 
@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
 		GridView gridview = (GridView) findViewById(R.id.gridview);
 		gArr = dbhandler.getAllGames();
 
-		customGridAdapter = new CustomGameAdapter(this, R.layout.game_tile, gArr, dbhandler);
+		customGridAdapter = new GameAdapter(this, R.layout.game_tile, gArr, dbhandler);
 		
 		gridview.setAdapter(customGridAdapter);
 		
@@ -88,15 +88,15 @@ public class MainActivity extends Activity {
 		ArrayList<MenuItem> m1Arr = new ArrayList<MenuItem>();
 		final ArrayList<MenuItem> m2Arr = new ArrayList<MenuItem>();
 		
-		CustomMenuAdapter customListAdapter1;
-		CustomMenuAdapter customListAdapter2;
+		MenuAdapter customListAdapter1;
+		MenuAdapter customListAdapter2;
 		
 		ListView primaryListView = (ListView) findViewById(R.id.menu_primary_list);
 		EditText searchText = (EditText) findViewById(R.id.search_input);
 		
 		m1Arr.add(new MenuItem("Add Game", MainActivity.class, getResources().getDrawable(R.drawable.compass)));
 		
-		customListAdapter1 = new CustomMenuAdapter(this, R.layout.menu_list_item, m1Arr);
+		customListAdapter1 = new MenuAdapter(this, R.layout.menu_list_item, m1Arr);
 		primaryListView.setAdapter(customListAdapter1);
 		primaryListView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -113,7 +113,7 @@ public class MainActivity extends Activity {
 		m2Arr.add(new MenuItem("Messages", MessageBoardActivity.class, getResources().getDrawable(R.drawable.compass)));
 		m2Arr.add(new MenuItem("Responses", ResponseActivity.class, getResources().getDrawable(R.drawable.compass)));
 		
-		customListAdapter2 = new CustomMenuAdapter(this, R.layout.menu_list_item, m2Arr);
+		customListAdapter2 = new MenuAdapter(this, R.layout.menu_list_item, m2Arr);
 		customListAdapter2.setTextColor(Color.BLACK);
 		secondaryListView.setAdapter(customListAdapter2);
 		secondaryListView.setOnItemClickListener(new OnItemClickListener() {
@@ -242,7 +242,7 @@ public class MainActivity extends Activity {
 		if (newArr.size() != 0) {
 			findViewById(R.id.gridview).setVisibility(View.VISIBLE);
 			customGridAdapter.notifyDataSetChanged();
-			gridview.setAdapter(new CustomGameAdapter(this, R.layout.game_tile, newArr, dbhandler));
+			gridview.setAdapter(new GameAdapter(this, R.layout.game_tile, newArr, dbhandler));
 		} else {
 			findViewById(R.id.gridview).setVisibility(View.INVISIBLE);
 		}

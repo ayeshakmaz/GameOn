@@ -2,9 +2,9 @@ package com.example.gameon;
 
 import java.util.ArrayList;
 
-import com.example.gameon.layouts.CustomGameAdapter;
-import com.example.gameon.layouts.CustomMenuAdapter;
-import com.example.gameon.layouts.CustomMessageAdapter;
+import com.example.gameon.layouts.GameAdapter;
+import com.example.gameon.layouts.MenuAdapter;
+import com.example.gameon.layouts.MessageAdapter;
 import com.example.gameon.layouts.view.viewgroup.FlyOutContainer;
 import com.example.gameon.objects.Game;
 import com.example.gameon.objects.MenuItem;
@@ -43,15 +43,15 @@ public class MessageBoardActivity extends Activity {
 		ArrayList<MenuItem> m1Arr = new ArrayList<MenuItem>();
 		final ArrayList<MenuItem> m2Arr = new ArrayList<MenuItem>();
 		
-		CustomMenuAdapter customListAdapter1;
-		CustomMenuAdapter customListAdapter2;
+		MenuAdapter customListAdapter1;
+		MenuAdapter customListAdapter2;
 		
 		ListView primaryListView = (ListView) findViewById(R.id.menu_primary_list);
 		EditText searchText = (EditText) findViewById(R.id.search_input);
 		
 		m1Arr.add(new MenuItem("Add Game", MainActivity.class, getResources().getDrawable(R.drawable.compass)));
 		
-		customListAdapter1 = new CustomMenuAdapter(this, R.layout.menu_list_item, m1Arr);
+		customListAdapter1 = new MenuAdapter(this, R.layout.menu_list_item, m1Arr);
 		primaryListView.setAdapter(customListAdapter1);
 		primaryListView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -68,7 +68,7 @@ public class MessageBoardActivity extends Activity {
 		m2Arr.add(new MenuItem("Messages", MessageBoardActivity.class, getResources().getDrawable(R.drawable.compass)));
 		m2Arr.add(new MenuItem("Responses", ResponseActivity.class, getResources().getDrawable(R.drawable.compass)));
 		
-		customListAdapter2 = new CustomMenuAdapter(this, R.layout.menu_list_item, m2Arr);
+		customListAdapter2 = new MenuAdapter(this, R.layout.menu_list_item, m2Arr);
 		customListAdapter2.setTextColor(Color.BLACK);
 		secondaryListView.setAdapter(customListAdapter2);
 		secondaryListView.setOnItemClickListener(new OnItemClickListener() {
@@ -90,7 +90,7 @@ public class MessageBoardActivity extends Activity {
 				
 		ListView messageList = (ListView) findViewById(R.id.message_listView);
 		
-		CustomMessageAdapter customMessageAdapter = new CustomMessageAdapter(this,
+		MessageAdapter customMessageAdapter = new MessageAdapter(this,
 				R.layout.message_item, mArr);
 		messageList.setAdapter(customMessageAdapter);
 	}

@@ -16,14 +16,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomMenuAdapter extends ArrayAdapter<MenuItem>{
+public class MenuAdapter extends ArrayAdapter<MenuItem>{
 
 	ArrayList<MenuItem> objects;
 	Context context;
 	int layoutResId;
 	int textColor = Color.WHITE;
 	
-	public CustomMenuAdapter(Context context, int resource,
+	public MenuAdapter(Context context, int resource,
 			ArrayList<MenuItem> objects) {
 		super(context, resource, resource, objects);
 		this.objects = objects;

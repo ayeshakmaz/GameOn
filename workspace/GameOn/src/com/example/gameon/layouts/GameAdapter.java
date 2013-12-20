@@ -37,7 +37,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-public class CustomGameAdapter extends ArrayAdapter<Game> {
+public class GameAdapter extends ArrayAdapter<Game> {
 
 	 private Context context;
 	 private int layoutResourceId;
@@ -56,7 +56,7 @@ public class CustomGameAdapter extends ArrayAdapter<Game> {
 		this.data = data;
 	}
 
-	public CustomGameAdapter(Context context, int resource,
+	public GameAdapter(Context context, int resource,
 			ArrayList<Game> objects, DatabaseManager dbh) {
 		super(context, resource, objects);
 
