@@ -3,6 +3,8 @@ package com.example.gameon;
 import java.util.ArrayList;
 
 import com.example.gameon.layouts.MenuAdapter;
+import com.example.gameon.layouts.MessageAdapter;
+import com.example.gameon.layouts.ResponseAdapter;
 import com.example.gameon.layouts.view.viewgroup.FlyOutContainer;
 import com.example.gameon.objects.MenuItem;
 import com.example.gameon.objects.Message;
@@ -24,7 +26,7 @@ import android.widget.AdapterView.OnItemClickListener;
 public class ResponseActivity extends Activity {
 	
 	FlyOutContainer root;
-	private ArrayList<Response> mArr;
+	private ArrayList<Response> rArr;
 	private DatabaseManager dbh;
 	
 	@Override
@@ -79,6 +81,16 @@ public class ResponseActivity extends Activity {
 				});
 				
 				//************************** Flyout container END **********************************
+				
+				dbh = new DatabaseManager(this, getIntent());
+				
+				rArr = dbh.getAllResponsesForUser(dbh.getCurrentUser());
+						
+				ListView responseList = (ListView) findViewById(R.id.response_listView);
+				
+				ResponseAdapter messageAdapter = new ResponseAdapter(this,
+						R.layout.response_item, rArr, dbh);
+				responseList.setAdapter(messageAdapter);
 	}
 
 	@Override

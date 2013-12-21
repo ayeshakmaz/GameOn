@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF"
+    android:padding="2dp" >
+
+    <TextView
+        android:id="@+id/response_notification_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/response_teamsize_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/response_notification_tv"
+        android:layout_marginLeft="3dp"
+        android:textColor="#228a4c"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/response_skill_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/response_teamsize_tv"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/response_teamsize_tv"
+        android:textSize="35sp" />
+
+    <Button
+        android:id="@+id/response_accept_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/response_notification_tv"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="13dp"
+        android:layout_toLeftOf="@+id/response_deny_button"
+        android:background="#228a4c"
+        android:padding="3dp"
+        android:text="Accept"
+        android:textColor="#fff"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/response_deny_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/response_notification_tv"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="13dp"
+        android:background="#ff3100"
+        android:padding="3dp"
+        android:text="Deny"
+        android:textColor="#fff"
+        android:textSize="20sp" />
+
+</RelativeLayout>

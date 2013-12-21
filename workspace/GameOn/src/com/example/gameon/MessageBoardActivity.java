@@ -43,16 +43,16 @@ public class MessageBoardActivity extends Activity {
 		ArrayList<MenuItem> m1Arr = new ArrayList<MenuItem>();
 		final ArrayList<MenuItem> m2Arr = new ArrayList<MenuItem>();
 		
-		MenuAdapter customListAdapter1;
-		MenuAdapter customListAdapter2;
+		MenuAdapter menuAdapter1;
+		MenuAdapter menuAdapter2;
 		
 		ListView primaryListView = (ListView) findViewById(R.id.menu_primary_list);
 		EditText searchText = (EditText) findViewById(R.id.search_input);
 		
 		m1Arr.add(new MenuItem("Add Game", MainActivity.class, getResources().getDrawable(R.drawable.compass)));
 		
-		customListAdapter1 = new MenuAdapter(this, R.layout.menu_list_item, m1Arr);
-		primaryListView.setAdapter(customListAdapter1);
+		menuAdapter1 = new MenuAdapter(this, R.layout.menu_list_item, m1Arr);
+		primaryListView.setAdapter(menuAdapter1);
 		primaryListView.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> parent, View v, int position,
@@ -68,9 +68,9 @@ public class MessageBoardActivity extends Activity {
 		m2Arr.add(new MenuItem("Messages", MessageBoardActivity.class, getResources().getDrawable(R.drawable.compass)));
 		m2Arr.add(new MenuItem("Responses", ResponseActivity.class, getResources().getDrawable(R.drawable.compass)));
 		
-		customListAdapter2 = new MenuAdapter(this, R.layout.menu_list_item, m2Arr);
-		customListAdapter2.setTextColor(Color.BLACK);
-		secondaryListView.setAdapter(customListAdapter2);
+		menuAdapter2 = new MenuAdapter(this, R.layout.menu_list_item, m2Arr);
+		menuAdapter2.setTextColor(Color.BLACK);
+		secondaryListView.setAdapter(menuAdapter2);
 		secondaryListView.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> parent, View v, int position,
@@ -90,9 +90,9 @@ public class MessageBoardActivity extends Activity {
 				
 		ListView messageList = (ListView) findViewById(R.id.message_listView);
 		
-		MessageAdapter customMessageAdapter = new MessageAdapter(this,
+		MessageAdapter messageAdapter = new MessageAdapter(this,
 				R.layout.message_item, mArr);
-		messageList.setAdapter(customMessageAdapter);
+		messageList.setAdapter(messageAdapter);
 	}
 
 	@Override

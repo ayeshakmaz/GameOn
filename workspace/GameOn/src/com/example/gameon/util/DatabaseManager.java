@@ -213,4 +213,26 @@ public class DatabaseManager {
 		}
 		return rArr;
 	}
+
+	public Game getGameByID(String gameID) {
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("game");
+		ParseObject o = null;
+		try {
+			o = query.get(gameID);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+		}
+		if (o != null){
+			Game g = new Game((String) o.get("user"),
+						getSportObject((String) o.get("sport_name"),
+								(String) o.get("sport_level")),
+						(String) o.get("location"), (String) o.get("date"),
+						(String) o.get("gender"), (Integer) o.get("size"));
+			g.setID(o.getObjectId());
+			return g;
+		}
+		else {
+			return null;
+		}
+	}
 }

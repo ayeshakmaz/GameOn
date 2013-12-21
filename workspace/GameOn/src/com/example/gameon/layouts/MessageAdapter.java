@@ -65,7 +65,6 @@ public class MessageAdapter extends ArrayAdapter<Message>{
 		this.textColor = textColor;
 	}
 
-
 	static class RecordHolder {
 		TextView message;
 		TextView time;
