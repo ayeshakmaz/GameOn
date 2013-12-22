@@ -107,10 +107,12 @@ public class GameAdapter extends ArrayAdapter<Game> {
 		
 		Drawable background;
 		
-		if(game.getSport().getLevel() == "nub") {
+		Log.d("game", game.getSport().getLevel());
+		
+		if(game.getSport().getLevel().equals("nub")) {
 			background = getContext().getResources().getDrawable(R.drawable.tile_bg_nub);
 		}
-		else if (game.getSport().getLevel() == "avg") {
+		else if (game.getSport().getLevel().equals("avg")) {
 			background = getContext().getResources().getDrawable(R.drawable.tile_bg_avg);
 		}
 		else {

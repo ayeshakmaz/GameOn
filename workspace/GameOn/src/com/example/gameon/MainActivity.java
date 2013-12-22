@@ -187,8 +187,6 @@ public class MainActivity extends Activity {
 			}
 			
 		});
-//		Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
-//		spinner2.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 	}
 
 	@Override
