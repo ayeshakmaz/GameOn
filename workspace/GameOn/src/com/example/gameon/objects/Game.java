@@ -1,13 +1,6 @@
 package com.example.gameon.objects;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
-import com.example.gameon.sports.Sport;
 import com.example.gameon.util.DatabaseManager;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseUser;
 
 public class Game {
 
@@ -19,6 +12,10 @@ public class Game {
 	private int size;
 	private String objID;
 
+	public Game() {
+		
+	}
+	
 	public Game(String username, Sport sport, String location, String dat, String gender, int size) {
 		this.username = username;
 		this.sport = sport;
@@ -99,4 +96,10 @@ public class Game {
 		this.objID = id;
 	}
 	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 }

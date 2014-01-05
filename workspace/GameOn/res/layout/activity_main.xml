@@ -1,4 +1,4 @@
-<com.example.gameon.layouts.view.viewgroup.FlyOutContainer xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.gameon.animation.FlyOutContainer xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
@@ -105,17 +105,8 @@
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:hint="Search" />
-
-        <!--
-           <Spinner
-            android:id="@+id/spinner2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/spinner1"
-            android:layout_below="@+id/spinner1"
-            android:entries="@array/location_arrays"
-            android:prompt="@string/location_prompt" />
-        -->
+        
+        
 
         <ListView
             android:id="@+id/menu_setting_list"
@@ -128,5 +119,4 @@
             android:entries="@array/settings_options" >
         </ListView>
     </RelativeLayout>
-
-</com.example.gameon.layouts.view.viewgroup.FlyOutContainer>
+</com.example.gameon.animation.FlyOutContainer>

@@ -3,7 +3,6 @@ package com.example.gameon.layouts;
 import java.util.ArrayList;
 
 import com.example.gameon.R;
-import com.example.gameon.R.id;
 import com.example.gameon.objects.MenuItem;
 
 import android.app.Activity;

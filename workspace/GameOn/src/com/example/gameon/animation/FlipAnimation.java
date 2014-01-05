@@ -19,7 +19,7 @@
  *  @author Ephraim A. Tekle
  *
  */
-package com.tekle.oss.android.animation;
+package com.example.gameon.animation;
 
 import android.view.animation.Animation;
 import android.graphics.Camera;

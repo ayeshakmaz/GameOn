@@ -30,7 +30,6 @@ public class ResponseAdapter extends ArrayAdapter<Response>{
 	private Context context;
 	private int layoutResId;
 	private int textColor = Color.BLACK;
-	private DatabaseManager dbh;
 	
 	public ResponseAdapter(Context context, int resource,
 			ArrayList<Response> objects, DatabaseManager dbh) {
@@ -38,7 +37,6 @@ public class ResponseAdapter extends ArrayAdapter<Response>{
 		this.objects = objects;
 		this.context = context;
 		this.layoutResId = resource;
-		this.dbh = dbh;
 		games = dbh.getAllGames();
 	}
 	

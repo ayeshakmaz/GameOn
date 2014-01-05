@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-import com.example.gameon.layouts.view.viewgroup.FlyOutContainer;
+import com.example.gameon.animation.FlyOutContainer;
 import com.example.gameon.objects.Message;
 import com.example.gameon.util.DatabaseManager;
 

@@ -2,11 +2,9 @@ package com.example.gameon;
 
 import java.util.ArrayList;
 
-import com.example.gameon.layouts.GameAdapter;
+import com.example.gameon.animation.FlyOutContainer;
 import com.example.gameon.layouts.MenuAdapter;
 import com.example.gameon.layouts.MessageAdapter;
-import com.example.gameon.layouts.view.viewgroup.FlyOutContainer;
-import com.example.gameon.objects.Game;
 import com.example.gameon.objects.MenuItem;
 import com.example.gameon.objects.Message;
 import com.example.gameon.util.DatabaseManager;
@@ -15,12 +13,10 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -47,7 +43,6 @@ public class MessageBoardActivity extends Activity {
 		MenuAdapter menuAdapter2;
 		
 		ListView primaryListView = (ListView) findViewById(R.id.menu_primary_list);
-		EditText searchText = (EditText) findViewById(R.id.search_input);
 		
 		m1Arr.add(new MenuItem("Add Game", MainActivity.class, getResources().getDrawable(R.drawable.compass)));
 		

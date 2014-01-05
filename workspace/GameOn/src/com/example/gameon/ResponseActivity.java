@@ -2,12 +2,10 @@ package com.example.gameon;
 
 import java.util.ArrayList;
 
+import com.example.gameon.animation.FlyOutContainer;
 import com.example.gameon.layouts.MenuAdapter;
-import com.example.gameon.layouts.MessageAdapter;
 import com.example.gameon.layouts.ResponseAdapter;
-import com.example.gameon.layouts.view.viewgroup.FlyOutContainer;
 import com.example.gameon.objects.MenuItem;
-import com.example.gameon.objects.Message;
 import com.example.gameon.objects.Response;
 import com.example.gameon.util.DatabaseManager;
 
@@ -19,7 +17,6 @@ import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -45,7 +42,6 @@ public class ResponseActivity extends Activity {
 				MenuAdapter customListAdapter2;
 				
 				ListView primaryListView = (ListView) findViewById(R.id.menu_primary_list);
-				EditText searchText = (EditText) findViewById(R.id.search_input);
 				
 				m1Arr.add(new MenuItem("Add Game", MainActivity.class, getResources().getDrawable(R.drawable.compass)));
 				

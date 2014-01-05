@@ -1,4 +1,4 @@
-package com.example.gameon.layouts.view.viewgroup;
+package com.example.gameon.animation;
 
 import android.R;
 import android.annotation.SuppressLint;

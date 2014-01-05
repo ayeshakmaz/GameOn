@@ -1,8 +1,6 @@
 package com.example.gameon.util;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import android.content.Context;
@@ -12,10 +10,7 @@ import android.util.Log;
 import com.example.gameon.objects.Game;
 import com.example.gameon.objects.Message;
 import com.example.gameon.objects.Response;
-import com.example.gameon.sports.Basketball;
-import com.example.gameon.sports.Football;
-import com.example.gameon.sports.Sport;
-import com.parse.GetCallback;
+import com.example.gameon.objects.Sport;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
@@ -89,7 +84,7 @@ public class DatabaseManager {
 		Game addGame;
 		for (ParseObject o : results) {
 			addGame = new Game((String) o.get("user"),
-					getSportObject((String) o.get("sport_name"),
+					new Sport((String) o.get("sport_name"),
 							(String) o.get("sport_level")),
 					(String) o.get("location"), (String) o.get("date"),
 					(String) o.get("gender"), (Integer) o.get("size"));
@@ -100,15 +95,6 @@ public class DatabaseManager {
 		}
 
 		return gArr;
-	}
-
-	private Sport getSportObject(String name, String level) {
-		if (name.equals("Football")) {
-			return new Football(level);
-		} else if (name.equals("Basketball")) {
-			return new Basketball(level);
-		}
-		return null;
 	}
 
 	public ParseUser getCurrentUser() {
@@ -224,7 +210,7 @@ public class DatabaseManager {
 		}
 		if (o != null){
 			Game g = new Game((String) o.get("user"),
-						getSportObject((String) o.get("sport_name"),
+						new Sport((String) o.get("sport_name"),
 								(String) o.get("sport_level")),
 						(String) o.get("location"), (String) o.get("date"),
 						(String) o.get("gender"), (Integer) o.get("size"));

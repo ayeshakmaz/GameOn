@@ -9,25 +9,22 @@ import java.util.Locale;
 import com.example.gameon.MainActivity;
 import com.example.gameon.NewMessageActivity;
 import com.example.gameon.R;
+import com.example.gameon.animation.AnimationFactory;
+import com.example.gameon.animation.AnimationFactory.FlipDirection;
 import com.example.gameon.objects.Game;
 import com.example.gameon.objects.Response;
 import com.example.gameon.util.DatabaseManager;
-import com.tekle.oss.android.animation.AnimationFactory;
-import com.tekle.oss.android.animation.AnimationFactory.FlipDirection;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,8 +41,6 @@ public class GameAdapter extends ArrayAdapter<Game> {
 	 private ArrayList<Game> data = new ArrayList<Game>();
 	 private ArrayList<Integer> responded = new ArrayList<Integer>();
 	 private DatabaseManager dbh;
-	 private String skillItem = "nub";
-	 private int responseTeamSize;
 	 
 
 	public ArrayList<Game> getData() {
@@ -106,9 +101,7 @@ public class GameAdapter extends ArrayAdapter<Game> {
 		final ViewFlipper flipper = (ViewFlipper) row.findViewById(R.id.my_view_flipper) ;
 		
 		Drawable background;
-		
-		Log.d("game", game.getSport().getLevel());
-		
+				
 		if(game.getSport().getLevel().equals("nub")) {
 			background = getContext().getResources().getDrawable(R.drawable.tile_bg_nub);
 		}
@@ -163,11 +156,24 @@ public class GameAdapter extends ArrayAdapter<Game> {
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd h:mm a", Locale.US);
 				Calendar cal = Calendar.getInstance();
 				String time = format.format(cal.getTime());
+
+				RelativeLayout parent = ((RelativeLayout)v.getParent());
+//				Spinner skill_spin = (Spinner) v.findViewById(R.id.skill_spinner);
+//				EditText numPlayers_et = (EditText) v.findViewById(R.id.num_players_et);
+//				
+//				int teamSize_et_index = ((RelativeLayout) numPlayers_et.getParent()).indexOfChild(numPlayers_et);
+//				int skill_spinner_index = ((RelativeLayout) skill_spin.getParent()).indexOfChild(skill_spin);
+//				
+//				Log.d("game", "tsi: " + teamSize_et_index + " spi: " + skill_spinner_index);
+				
+				int teamSize = Integer.parseInt(((EditText) parent.getChildAt(2)).getText().toString());
+				String responseSkill = ((Spinner) parent.getChildAt(4)).getSelectedItem().toString();
+				
 				boolean result = dbh.addResponse(new Response(game.getUser(), 
 												dbh.getCurrentUser().getUsername(),
-												responseTeamSize, skillItem, time, game.getID()));
+												teamSize, responseSkill, time, game.getID()));
 			
-				if (true) {
+				if (result) {
 					v.setVisibility(View.INVISIBLE);
 					RelativeLayout rel = ((RelativeLayout)((ViewFlipper)v.getParent().getParent()).getChildAt(0));
 					rel.getChildAt(rel.getChildCount()-1).setVisibility(View.VISIBLE);
@@ -196,34 +202,6 @@ public class GameAdapter extends ArrayAdapter<Game> {
 			public void onClick(View v) {
 				MainActivity.hideSoftKeyboard((Activity)context);
 				AnimationFactory.flipTransition(flipper, FlipDirection.LEFT_RIGHT);
-			}
-		});
-	    
-	    holder.skill.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-	        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-	            skillItem = (String) parent.getItemAtPosition(pos);
-	        }
-	        public void onNothingSelected(AdapterView<?> parent) {
-	        }
-	    });
-	    
-	    holder.teamSize.addTextChangedListener(new TextWatcher() {
-			
-			@Override
-			public void onTextChanged(CharSequence s, int size, int arg2, int arg3) {
-				responseTeamSize = Integer.parseInt(s.toString());
-			}
-			
-			@Override
-			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-					int arg3) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void afterTextChanged(Editable arg0) {
-				// TODO Auto-generated method stub
 			}
 		});
 	    

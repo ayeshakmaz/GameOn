@@ -1,33 +1,30 @@
 package com.example.gameon;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.gameon.animation.FlyOutContainer;
+import com.example.gameon.async.ManagedAsyncTask;
 import com.example.gameon.layouts.GameAdapter;
 import com.example.gameon.layouts.MenuAdapter;
-import com.example.gameon.layouts.view.viewgroup.FlyOutContainer;
 import com.example.gameon.objects.Game;
 import com.example.gameon.objects.MenuItem;
-import com.example.gameon.sports.Basketball;
-import com.example.gameon.sports.Football;
 import com.example.gameon.util.DatabaseManager;
-import com.parse.Parse;
-import com.parse.ParseAnalytics;
+import com.example.gameon.util.SQLiteDatabaseManger;
+
 import com.parse.ParseUser;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.format.Time;
-import android.text.style.UpdateLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -42,13 +39,15 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
 	FlyOutContainer root;
 	private ArrayList<Game> gArr;
 	private GameAdapter customGridAdapter;
 	private String searchItemSelected = "Sport";
-	DatabaseManager dbhandler;
+	private DatabaseManager dbhandler;
+	private SQLiteDatabaseManger sqldbh;
+	private String searchString;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +56,13 @@ public class MainActivity extends Activity {
 		this.root = (FlyOutContainer) this.getLayoutInflater().inflate(
 				R.layout.activity_main, null);
 		this.setContentView(root);
-
+	
 		gArr = new ArrayList<Game>();
-
 		
 		dbhandler = new DatabaseManager(this, getIntent());
+		sqldbh = new SQLiteDatabaseManger(this);
+
+		update_sql_db();
 
 		ParseUser currentUser = dbhandler.getCurrentUser();
 
@@ -77,7 +78,13 @@ public class MainActivity extends Activity {
 		addListenerOnSpinnerItemSelection();
 
 		GridView gridview = (GridView) findViewById(R.id.gridview);
-		gArr = dbhandler.getAllGames();
+		gArr = sqldbh.getAllGames();
+		Log.d("MainAct", Integer.toString(gArr.size()));
+		if (gArr.size() == 0) {
+			sqldbh.update_from_parse(dbhandler);
+			gArr = sqldbh.getAllGames();
+			Log.d("MainAct", "here");
+		}
 
 		customGridAdapter = new GameAdapter(this, R.layout.game_tile, gArr, dbhandler);
 		
@@ -130,12 +137,13 @@ public class MainActivity extends Activity {
 		//************************** Flyout container END **********************************
 
 		searchText.addTextChangedListener(new TextWatcher() {
-			
+			private Timer timer = new Timer();
 			@Override
 			public void onTextChanged(CharSequence s, int size, int arg2, int arg3) {
-				Log.d("TextChanged", s.toString().concat(" ").concat(Integer.toString(size)).concat(" ").concat(Integer.toString(arg2)).concat(" ").concat(Integer.toString(arg3)));
-				Log.d("TextChanged", searchItemSelected);
-				updateGridView(s);
+				searchString = s.toString();
+				timer.cancel();
+				timer = new Timer();
+				timer.schedule(new MyTimerTask(), 500);
 			}
 			
 			@Override
@@ -257,4 +265,41 @@ public class MainActivity extends Activity {
 		((RelativeLayout)v.getParent()).invalidate();
 		Log.d("message", v.getParent().toString());
 	}
+	
+	public void update_sql_db() {
+		new ManagedAsyncTask<Void, Void, Void>(this) {
+
+			protected Void doInBackground(Void... params) {
+				sqldbh.update_from_parse(dbhandler);
+				return null;
+	        }
+			@Override
+			protected void onPostExecute(Void result) {
+				super.onPostExecute(result);
+				refresh_grid();
+			}
+	    }.execute();
+	}
+	public void refresh_grid() {
+		
+		GridView gridview = (GridView) findViewById(R.id.gridview);
+		
+		ArrayList<Game> newArr = sqldbh.getAllGames();
+		
+		findViewById(R.id.gridview).setVisibility(View.VISIBLE);
+		customGridAdapter.notifyDataSetChanged();
+		gridview.setAdapter(new GameAdapter(this, R.layout.game_tile, newArr, dbhandler));
+	}
+	private class MyTimerTask extends TimerTask{
+
+        @Override
+        public void run() {        
+            runOnUiThread(new Runnable() {              
+                @Override
+                public void run() {
+                    updateGridView(searchString);
+                }
+            });
+        }       
+    }
 }

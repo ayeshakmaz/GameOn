@@ -1,6 +1,5 @@
 package com.example.gameon.objects;
 
-import android.app.Activity;
 import android.graphics.drawable.Drawable;
 
 public class MenuItem {
